@@ -1,0 +1,55 @@
+name: TitleRedactedCalc
+options:
+  bundleIdPrefix: com.titleRedactedCalc
+  deploymentTarget: "14.0"
+  xcodeGen: true
+
+targets:
+  CoreCalculator:
+    type: framework
+    platform: macOS
+    sources: [Sources/CoreCalculator]
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+
+  Utilities:
+    type: framework
+    platform: macOS
+    sources: [Sources/Utilities]
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+
+  ViewModels:
+    type: framework
+    platform: macOS
+    sources: [Sources/ViewModels]
+    dependencies:
+      - target: CoreCalculator
+      - target: Utilities
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+
+  TitleRedactedCalcApp:
+    type: application
+    platform: macOS
+    sources: [Sources/swift-calc]
+    dependencies:
+      - target: ViewModels
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+
+  CalculatorTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [Tests/CalculatorTests]
+    dependencies:
+      - target: CoreCalculator
+      - target: ViewModels
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+
