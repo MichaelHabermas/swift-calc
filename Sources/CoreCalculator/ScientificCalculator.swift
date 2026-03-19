@@ -10,7 +10,7 @@ public final class ScientificCalculator: CalculatorEngine {
     private let basic = BasicCalculator()
 
     // Used for forward trig functions (sin/cos/tan).
-    var angleMode: AngleMode = .degrees
+    public var angleMode: AngleMode = .degrees
 
     private var waitingForPowerExponent: Bool = false
     private var powerBase: Double = 0

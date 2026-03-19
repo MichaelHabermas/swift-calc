@@ -12,6 +12,7 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
 
   Utilities:
     type: framework
@@ -20,6 +21,7 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
 
   ViewModels:
     type: framework
@@ -31,6 +33,7 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
 
   TitleRedactedCalcApp:
     type: application
@@ -38,9 +41,16 @@ targets:
     sources: [Sources/swift-calc]
     dependencies:
       - target: ViewModels
+      - target: CoreCalculator
+      - target: Utilities
     settings:
       base:
         SWIFT_VERSION: "6.0"
+        INFOPLIST_KEY_NSPrincipalClass: NSApplication
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: TitleRedactedCalc
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0.0"
 
   CalculatorTests:
     type: bundle.unit-test
@@ -49,7 +59,8 @@ targets:
     dependencies:
       - target: CoreCalculator
       - target: ViewModels
+      - target: Utilities
     settings:
       base:
         SWIFT_VERSION: "6.0"
-
+        GENERATE_INFOPLIST_FILE: YES

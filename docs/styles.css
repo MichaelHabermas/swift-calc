@@ -1,0 +1,140 @@
+/* TitleRedactedCalc landing page styles */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0d0d0d;
+  --surface: #1a1a1a;
+  --border:  #2a2a2a;
+  --text:    #f0f0f0;
+  --muted:   #888;
+  --accent:  #ff9500;
+  --radius:  12px;
+  --font:    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,13,13,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.nav-inner {
+  max-width: 900px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+.nav-req  { font-size: 13px; color: var(--muted); }
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding: 100px 24px 80px;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,149,0,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(255,149,0,0.3);
+  border-radius: 999px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+  padding: 4px 14px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--accent); }
+.hero p {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--muted); max-width: 560px; margin: 0 auto 40px;
+}
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #000;
+  font-size: 16px; font-weight: 700;
+  padding: 14px 32px; border-radius: var(--radius);
+  text-decoration: none; transition: opacity .2s;
+}
+.btn-primary:hover { opacity: .85; }
+.btn-secondary {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--border); color: var(--text);
+  font-size: 16px; padding: 14px 28px; border-radius: var(--radius);
+  text-decoration: none; transition: border-color .2s;
+}
+.btn-secondary:hover { border-color: var(--accent); }
+
+/* ── Screenshots ── */
+.screenshots { padding: 60px 0; }
+.screenshots h2 { text-align: center; font-size: 28px; margin-bottom: 40px; }
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.screenshot-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; text-align: center;
+}
+.screenshot-placeholder {
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  background: linear-gradient(135deg, #1a1a1a, #222);
+}
+.screenshot-card p {
+  padding: 12px; font-size: 13px; color: var(--muted);
+}
+
+/* ── Features ── */
+.features { padding: 60px 0; }
+.features h2 { text-align: center; font-size: 28px; margin-bottom: 40px; }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.feature-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 24px;
+}
+.feature-icon { font-size: 32px; margin-bottom: 12px; }
+.feature-card h3 { font-size: 16px; margin-bottom: 8px; }
+.feature-card p  { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  text-align: center;
+  color: var(--muted); font-size: 13px;
+}
+footer a { color: var(--muted); }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .hero { padding: 60px 24px 50px; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary { width: 100%; max-width: 300px; justify-content: center; }
+}

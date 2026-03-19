@@ -24,11 +24,21 @@ public final class GraphingCalculator: CalculatorEngine {
 
     // MARK: - Graph-specific API
 
-    func evaluateExpression(_ expression: String, x: Double) -> Double? {
+    public func evaluateExpression(_ expression: String, x: Double) -> Double? {
         let key = expression.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let ast = compile(expression: key) else { return nil }
         guard let result = ast.evaluate(x: x) else { return nil }
         return result
+    }
+
+    public func samplePoints(expression: String, xRange: ClosedRange<Double>, count: Int = 200) -> [GraphPoint] {
+        guard count > 1 else { return [] }
+        let step = (xRange.upperBound - xRange.lowerBound) / Double(count - 1)
+        return (0..<count).compactMap { i in
+            let x = xRange.lowerBound + Double(i) * step
+            guard let y = evaluateExpression(expression, x: x) else { return nil }
+            return GraphPoint(x: x, y: y)
+        }
     }
 
     // MARK: - Expression compilation/evaluation

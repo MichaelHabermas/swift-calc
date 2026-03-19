@@ -14,9 +14,9 @@ let package = Package(
         .library(name: "ViewModels", targets: ["ViewModels"]),
     ],
     targets: [
-        // EP-01 executable placeholder (UI lands in later epics).
         .executableTarget(
             name: "TitleRedactedCalcApp",
+            dependencies: ["ViewModels", "CoreCalculator", "Utilities"],
             path: "Sources/swift-calc"
         ),
         .target(
@@ -35,5 +35,5 @@ let package = Package(
             dependencies: ["CoreCalculator", "ViewModels", "Utilities"]
         ),
     ],
-    swiftLanguageVersions: [.v6]
+    swiftLanguageModes: [.v6]
 )
